@@ -38,21 +38,25 @@ const randomIntegerFromInterval = (min, max) => {
 };
 
 const makeTransaction = (transaction) => {
+  console.log(transaction);
+  
   const delay = randomIntegerFromInterval(1200, 3500);
-    console.log(delay);
+  console.log(delay);
+  
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const canProcess = Math.random() > 0.3;
 
       if (canProcess) {
         resolve({ id: transaction.id, time: delay });
+        //console.log(resolve);
       }
       reject(transaction.id);
     }, delay);
   })
 };    
 
-const logSuccess = ({id, time}) => {
+const logSuccess = ({id, time}) => { //выполнена деструктуризация объекта
   console.log(`Transaction ${id} processed in ${time} ms`);
 };
 
