@@ -36,7 +36,7 @@
 const randomIntegerFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
-
+const x = '"test_string"'
 const makeTransaction = (transaction) => {
   console.log(transaction);
   
@@ -48,7 +48,7 @@ const makeTransaction = (transaction) => {
       const canProcess = Math.random() > 0.3;
 
       if (canProcess) {
-        resolve({ id: transaction.id, time: delay });
+        resolve({ id: transaction.id, amount: transaction.amount, time: delay, test: x });
         //console.log(resolve);
       }
       reject(transaction.id);
@@ -56,8 +56,9 @@ const makeTransaction = (transaction) => {
   })
 };    
 
-const logSuccess = ({id, time}) => { //выполнена деструктуризация объекта
-  console.log(`Transaction ${id} processed in ${time} ms`);
+const logSuccess = ({id, amount, time, test}) => { //выполнена деструктуризация объекта
+  console.log(`Transaction ${id} with sum ${amount} processed in ${time} ms
+   and ${test}`);
 };
 
 const logError = id => {
